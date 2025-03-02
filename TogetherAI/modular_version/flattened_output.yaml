@@ -1,0 +1,925 @@
+
+### DEVICE: R1
+=== CONFIGURATION ===
+  Building configuration...:
+  Current configuration : 3544 bytes:
+  version 15.9:
+  service timestamps debug datetime msec:
+  service timestamps log datetime msec:
+  no service password-encryption:
+  hostname R1:
+  boot-start-marker:
+  boot-end-marker:
+  no logging console:
+  enable secret 9 $9$BqwqHIxAt3zWX9$bxsD2a6jzCELWEa.jLrkmGhOEpzeTlwMJFQXh1CZ9rM:
+  aaa new-model:
+  aaa authentication login default local:
+  aaa authorization console:
+  aaa authorization exec default local:
+  aaa session-id common:
+  mmi polling-interval 60:
+  no mmi auto-configure:
+  no mmi pvc:
+  mmi snmp-timeout 180:
+  no ip domain lookup:
+  ip domain name test.com:
+  ip cef:
+  no ipv6 cef:
+  multilink bundle-name authenticated:
+  username cisco privilege 15 secret 9 $9$9BylblmtSizjDf$Iw7TB88Mulo5akFEpGzGSZijvcGKlp/VBeOzCcsgPe2:
+  redundancy:
+  interface GigabitEthernet0/0:
+    ip address 10.48.71.141 255.255.255.192
+    duplex auto
+    speed auto
+    media-type rj45
+  interface GigabitEthernet0/1:
+    ip address 172.16.1.254 255.255.255.0
+    duplex auto
+    speed auto
+    media-type rj45
+  interface GigabitEthernet0/2:
+    ip address 172.16.0.1 255.255.255.0
+    duplex auto
+    speed auto
+    media-type rj45
+  interface GigabitEthernet0/3:
+    no ip address
+    shutdown
+    duplex auto
+    speed auto
+    media-type rj45
+  router ospf 1:
+    network 172.16.0.0 0.0.0.255 area 0
+    network 172.16.1.0 0.0.0.255 area 0
+  ip forward-protocol nd:
+  no ip http server:
+  no ip http secure-server:
+  ip route 0.0.0.0 0.0.0.0 10.48.71.129:
+  ip ssh version 2:
+  ipv6 ioam timestamp:
+  control-plane:
+  banner exec ^CCCCCC:
+  **************************************************************************:
+  * IOSv is strictly limited to use for evaluation, demonstration and IOS  *:
+  * education. IOSv is provided as-is and is not supported by Cisco's      *:
+  * Technical Advisory Center. Any use or disclosure, in whole or in part, *:
+  * of the IOSv Software or Documentation to any third party for any       *:
+  * purposes is expressly prohibited except as otherwise authorized by     *:
+  * Cisco in writing.                                                      *:
+  **************************************************************************^C:
+  banner incoming ^CCCCCC:
+  banner login ^CCCCCC:
+  line con 0:
+    exec-timeout 0 0
+  line aux 0:
+  line vty 0 4:
+    exec-timeout 0 0
+    transport input ssh
+  no scheduler allocate:
+  end:
+=== STATIC_ROUTING INFORMATION ===
+  vrf:
+    default:
+      address_family:
+        ipv4:
+          routes:
+            0.0.0.0/0:
+              route: 0.0.0.0/0
+              next_hop:
+                next_hop_list:
+                  1:
+                    index: 1
+                    active: True
+                    next_hop: 10.48.71.129
+                    preference: 1
+=== ARP INFORMATION ===
+  interfaces:
+    GigabitEthernet0/1:
+      ipv4:
+        neighbors:
+          172.16.1.254:
+            ip: 172.16.1.254
+            link_layer_address: 5254.001f.b19a
+            origin: static
+          172.16.1.1:
+            ip: 172.16.1.1
+            link_layer_address: 5254.001e.ce38
+            origin: dynamic
+      arp_dynamic_learning:
+        local_proxy_enable: False
+        proxy_enable: True
+    GigabitEthernet0/2:
+      ipv4:
+        neighbors:
+          172.16.0.2:
+            ip: 172.16.0.2
+            link_layer_address: 5254.0002.d357
+            origin: dynamic
+          172.16.0.1:
+            ip: 172.16.0.1
+            link_layer_address: 5254.000a.8dd0
+            origin: static
+      arp_dynamic_learning:
+        local_proxy_enable: False
+        proxy_enable: True
+    GigabitEthernet0/0:
+      ipv4:
+        neighbors:
+          10.48.71.142:
+            ip: 10.48.71.142
+            link_layer_address: 5254.001a.bb1a
+            origin: dynamic
+          10.48.71.141:
+            ip: 10.48.71.141
+            link_layer_address: 5254.001d.e7cf
+            origin: static
+          10.48.71.129:
+            ip: 10.48.71.129
+            link_layer_address: 4c71.0d9d.b9ff
+            origin: dynamic
+      arp_dynamic_learning:
+        local_proxy_enable: False
+        proxy_enable: True
+  statistics:
+    in_requests_pkts: 25
+    in_replies_pkts: 13
+    out_requests_pkts: 2
+    out_replies_pkts: 21
+    in_drops: 0
+=== DOT1X INFORMATION ===
+  version: 3
+  sessions:
+    authorized_clients: 0
+    unauthorized_clients: 0
+    total: 0
+  system_auth_control: False
+=== INTERFACE INFORMATION ===
+  GigabitEthernet0/3:
+    Status: disabled
+    Operational: down
+  GigabitEthernet0/2:
+    Status: enabled
+    Operational: up
+    IPv4: 172.16.0.1/24
+  GigabitEthernet0/1:
+    Status: enabled
+    Operational: up
+    IPv4: 172.16.1.254/24
+  GigabitEthernet0/0:
+    Status: enabled
+    Operational: up
+    IPv4: 10.48.71.141/26
+=== OSPF INFORMATION ===
+  vrf:
+    default:
+      address_family:
+        ipv4:
+          instance:
+            1:
+              router_id: 172.16.1.254
+              preference:
+                single_value:
+                  all: 110
+              mpls:
+                ldp:
+                  autoconfig: False
+                  autoconfig_area_id: 0.0.0.0
+              areas:
+                0.0.0.0:
+                  mpls:
+                    te:
+                      enable: False
+                  database:
+                    lsa_types:
+                      1:
+                        lsa_type: 1
+                        lsas:
+                          172.16.2.254 172.16.2.254:
+                            lsa_id: 172.16.2.254
+                            adv_router: 172.16.2.254
+                            ospfv2:
+                              header:
+                                option: None
+                                lsa_id: 172.16.2.254
+                                age: 115
+                                type: 1
+                                adv_router: 172.16.2.254
+                                seq_num: 80000004
+                                checksum: 0xF59
+                                length: 48
+                              body:
+                                router:
+                                  num_of_links: 2
+                                  links:
+                                    172.16.2.0:
+                                      link_id: 172.16.2.0
+                                      link_data: 255.255.255.0
+                                      type: stub network
+                                      topologies:
+                                        0:
+                                          mt_id: 0
+                                          metric: 1
+                                    172.16.0.1:
+                                      link_id: 172.16.0.1
+                                      link_data: 172.16.0.2
+                                      type: transit network
+                                      topologies:
+                                        0:
+                                          mt_id: 0
+                                          metric: 1
+                          172.16.1.254 172.16.1.254:
+                            lsa_id: 172.16.1.254
+                            adv_router: 172.16.1.254
+                            ospfv2:
+                              header:
+                                option: None
+                                lsa_id: 172.16.1.254
+                                age: 119
+                                type: 1
+                                adv_router: 172.16.1.254
+                                seq_num: 80000005
+                                checksum: 0xFB6F
+                                length: 48
+                              body:
+                                router:
+                                  num_of_links: 2
+                                  links:
+                                    172.16.1.0:
+                                      link_id: 172.16.1.0
+                                      link_data: 255.255.255.0
+                                      type: stub network
+                                      topologies:
+                                        0:
+                                          mt_id: 0
+                                          metric: 1
+                                    172.16.0.1:
+                                      link_id: 172.16.0.1
+                                      link_data: 172.16.0.1
+                                      type: transit network
+                                      topologies:
+                                        0:
+                                          mt_id: 0
+                                          metric: 1
+                      2:
+                        lsa_type: 2
+                        lsas:
+                          172.16.0.1 172.16.1.254:
+                            lsa_id: 172.16.0.1
+                            adv_router: 172.16.1.254
+                            ospfv2:
+                              header:
+                                option: None
+                                lsa_id: 172.16.0.1
+                                age: 119
+                                type: 2
+                                adv_router: 172.16.1.254
+                                seq_num: 80000001
+                                checksum: 0xEC58
+                                length: 32
+                              body:
+                                network:
+                                  network_mask: 255.255.255.0
+                                  attached_routers:
+                                    172.16.1.254:
+                                    172.16.2.254:
+                  area_id: 0.0.0.0
+                  area_type: normal
+                  statistics:
+                    spf_runs_count: 5
+                    area_scope_lsa_count: 3
+                    area_scope_lsa_cksum_sum: 0x01F720
+                  interfaces:
+                    GigabitEthernet0/1:
+                      name: GigabitEthernet0/1
+                      interface_type: broadcast
+                      passive: False
+                      demand_circuit: False
+                      priority: 1
+                      transmit_delay: 1
+                      bfd:
+                        enable: False
+                      hello_interval: 10
+                      dead_interval: 40
+                      retransmit_interval: 5
+                      lls: True
+                      enable: True
+                      cost: 1
+                      state: dr
+                      hello_timer: 00:00:05
+                      dr_router_id: 172.16.1.254
+                      dr_ip_addr: 172.16.1.254
+                    GigabitEthernet0/2:
+                      name: GigabitEthernet0/2
+                      interface_type: broadcast
+                      passive: False
+                      demand_circuit: False
+                      priority: 1
+                      transmit_delay: 1
+                      bfd:
+                        enable: False
+                      hello_interval: 10
+                      dead_interval: 40
+                      retransmit_interval: 5
+                      lls: True
+                      enable: True
+                      cost: 1
+                      state: dr
+                      hello_timer: 00:00:05
+                      dr_router_id: 172.16.1.254
+                      dr_ip_addr: 172.16.0.1
+                      bdr_router_id: 172.16.2.254
+                      bdr_ip_addr: 172.16.0.2
+                      neighbors:
+                        172.16.2.254:
+                          neighbor_router_id: 172.16.2.254
+                          address: 172.16.0.2
+                          dr_ip_addr: 172.16.0.1
+                          bdr_ip_addr: 172.16.0.2
+                          state: full
+                          dead_timer: 00:00:36
+                          statistics:
+                            nbr_event_count: 6
+                            nbr_retrans_qlen: 0
+              nsr:
+                enable: False
+              graceful_restart:
+                cisco:
+                  enable: False
+                  type: cisco
+                ietf:
+                  enable: False
+                  type: ietf
+              auto_cost:
+                enable: False
+              spf_control:
+                paths: 4
+                throttle:
+                  spf:
+                    start: 5000
+                    hold: 10000
+                    maximum: 10000
+              stub_router:
+                always:
+                  always: False
+                  include_stub: False
+                  summary_lsa: False
+                  external_lsa: False
+              bfd:
+                enable: False
+              adjacency_stagger:
+                initial_number: 300
+                maximum_number: 300
+=== ROUTING INFORMATION ===
+  vrf:
+    default:
+      address_family:
+        ipv4:
+          routes:
+            172.16.2.0/24:
+              route: 172.16.2.0/24
+              active: True
+              route_preference: 110
+              metric: 2
+              source_protocol: ospf
+              source_protocol_codes: O
+              next_hop:
+                next_hop_list:
+                  1:
+                    index: 1
+                    next_hop: 172.16.0.2
+                    outgoing_interface: GigabitEthernet0/2
+                    updated: 00:02:01
+            172.16.1.254/32:
+              route: 172.16.1.254/32
+              active: True
+              source_protocol: local
+              source_protocol_codes: L
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/1:
+                    outgoing_interface: GigabitEthernet0/1
+            172.16.1.0/24:
+              route: 172.16.1.0/24
+              active: True
+              source_protocol: connected
+              source_protocol_codes: C
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/1:
+                    outgoing_interface: GigabitEthernet0/1
+            172.16.0.1/32:
+              route: 172.16.0.1/32
+              active: True
+              source_protocol: local
+              source_protocol_codes: L
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/2:
+                    outgoing_interface: GigabitEthernet0/2
+            172.16.0.0/24:
+              route: 172.16.0.0/24
+              active: True
+              source_protocol: connected
+              source_protocol_codes: C
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/2:
+                    outgoing_interface: GigabitEthernet0/2
+            10.48.71.141/32:
+              route: 10.48.71.141/32
+              active: True
+              source_protocol: local
+              source_protocol_codes: L
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/0:
+                    outgoing_interface: GigabitEthernet0/0
+            10.48.71.128/26:
+              route: 10.48.71.128/26
+              active: True
+              source_protocol: connected
+              source_protocol_codes: C
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/0:
+                    outgoing_interface: GigabitEthernet0/0
+            0.0.0.0/0:
+              route: 0.0.0.0/0
+              active: True
+              route_preference: 1
+              metric: 0
+              source_protocol: static
+              source_protocol_codes: S*
+              next_hop:
+                next_hop_list:
+                  1:
+                    index: 1
+                    next_hop: 10.48.71.129
+=== STP INFORMATION ===
+  global:
+    bpdu_guard: False
+### END_DEVICE: R1
+
+
+### DEVICE: R2
+=== CONFIGURATION ===
+  Building configuration...:
+  Current configuration : 3544 bytes:
+  version 15.9:
+  service timestamps debug datetime msec:
+  service timestamps log datetime msec:
+  no service password-encryption:
+  hostname R2:
+  boot-start-marker:
+  boot-end-marker:
+  no logging console:
+  enable secret 9 $9$3wV9GvqvtcAaJv$3pvFWFzz4iUbNqLnfRhRaA7WFre.kNEyinEvDkPV3TQ:
+  aaa new-model:
+  aaa authentication login default local:
+  aaa authorization console:
+  aaa authorization exec default local:
+  aaa session-id common:
+  mmi polling-interval 60:
+  no mmi auto-configure:
+  no mmi pvc:
+  mmi snmp-timeout 180:
+  no ip domain lookup:
+  ip domain name test.com:
+  ip cef:
+  no ipv6 cef:
+  multilink bundle-name authenticated:
+  username cisco privilege 15 secret 9 $9$.hhPjQmLMZni1v$Hkq/XA4DEqrjktEFRJx/AbJsyi3H8m4vhwcTnNmjAhg:
+  redundancy:
+  interface GigabitEthernet0/0:
+    ip address 10.48.71.142 255.255.255.192
+    duplex auto
+    speed auto
+    media-type rj45
+  interface GigabitEthernet0/1:
+    ip address 172.16.2.254 255.255.255.0
+    duplex auto
+    speed auto
+    media-type rj45
+  interface GigabitEthernet0/2:
+    ip address 172.16.0.2 255.255.255.0
+    duplex auto
+    speed auto
+    media-type rj45
+  interface GigabitEthernet0/3:
+    no ip address
+    shutdown
+    duplex auto
+    speed auto
+    media-type rj45
+  router ospf 1:
+    network 172.16.0.0 0.0.0.255 area 0
+    network 172.16.2.0 0.0.0.255 area 0
+  ip forward-protocol nd:
+  no ip http server:
+  no ip http secure-server:
+  ip route 0.0.0.0 0.0.0.0 10.48.71.129:
+  ip ssh version 2:
+  ipv6 ioam timestamp:
+  control-plane:
+  banner exec ^CCCCCC:
+  **************************************************************************:
+  * IOSv is strictly limited to use for evaluation, demonstration and IOS  *:
+  * education. IOSv is provided as-is and is not supported by Cisco's      *:
+  * Technical Advisory Center. Any use or disclosure, in whole or in part, *:
+  * of the IOSv Software or Documentation to any third party for any       *:
+  * purposes is expressly prohibited except as otherwise authorized by     *:
+  * Cisco in writing.                                                      *:
+  **************************************************************************^C:
+  banner incoming ^CCCCCC:
+  banner login ^CCCCCC:
+  line con 0:
+    exec-timeout 0 0
+  line aux 0:
+  line vty 0 4:
+    exec-timeout 0 0
+    transport input ssh
+  no scheduler allocate:
+  end:
+=== STATIC_ROUTING INFORMATION ===
+  vrf:
+    default:
+      address_family:
+        ipv4:
+          routes:
+            0.0.0.0/0:
+              route: 0.0.0.0/0
+              next_hop:
+                next_hop_list:
+                  1:
+                    index: 1
+                    active: True
+                    next_hop: 10.48.71.129
+                    preference: 1
+=== ARP INFORMATION ===
+  interfaces:
+    GigabitEthernet0/1:
+      ipv4:
+        neighbors:
+          172.16.2.254:
+            ip: 172.16.2.254
+            link_layer_address: 5254.000d.9bde
+            origin: static
+          172.16.2.1:
+            ip: 172.16.2.1
+            link_layer_address: 5254.0002.0e57
+            origin: dynamic
+      arp_dynamic_learning:
+        local_proxy_enable: False
+        proxy_enable: True
+    GigabitEthernet0/2:
+      ipv4:
+        neighbors:
+          172.16.0.2:
+            ip: 172.16.0.2
+            link_layer_address: 5254.0002.d357
+            origin: static
+          172.16.0.1:
+            ip: 172.16.0.1
+            link_layer_address: 5254.000a.8dd0
+            origin: dynamic
+      arp_dynamic_learning:
+        local_proxy_enable: False
+        proxy_enable: True
+    GigabitEthernet0/0:
+      ipv4:
+        neighbors:
+          10.48.71.142:
+            ip: 10.48.71.142
+            link_layer_address: 5254.001a.bb1a
+            origin: static
+          10.48.71.141:
+            ip: 10.48.71.141
+            link_layer_address: 5254.001d.e7cf
+            origin: dynamic
+          10.48.71.129:
+            ip: 10.48.71.129
+            link_layer_address: 4c71.0d9d.b9ff
+            origin: dynamic
+      arp_dynamic_learning:
+        local_proxy_enable: False
+        proxy_enable: True
+  statistics:
+    in_requests_pkts: 23
+    in_replies_pkts: 13
+    out_requests_pkts: 4
+    out_replies_pkts: 21
+    in_drops: 0
+=== DOT1X INFORMATION ===
+  version: 3
+  sessions:
+    authorized_clients: 0
+    unauthorized_clients: 0
+    total: 0
+  system_auth_control: False
+=== INTERFACE INFORMATION ===
+  GigabitEthernet0/3:
+    Status: disabled
+    Operational: down
+  GigabitEthernet0/2:
+    Status: enabled
+    Operational: up
+    IPv4: 172.16.0.2/24
+  GigabitEthernet0/1:
+    Status: enabled
+    Operational: up
+    IPv4: 172.16.2.254/24
+  GigabitEthernet0/0:
+    Status: enabled
+    Operational: up
+    IPv4: 10.48.71.142/26
+=== OSPF INFORMATION ===
+  vrf:
+    default:
+      address_family:
+        ipv4:
+          instance:
+            1:
+              router_id: 172.16.2.254
+              preference:
+                single_value:
+                  all: 110
+              mpls:
+                ldp:
+                  autoconfig: False
+                  autoconfig_area_id: 0.0.0.0
+              areas:
+                0.0.0.0:
+                  mpls:
+                    te:
+                      enable: False
+                  database:
+                    lsa_types:
+                      1:
+                        lsa_type: 1
+                        lsas:
+                          172.16.2.254 172.16.2.254:
+                            lsa_id: 172.16.2.254
+                            adv_router: 172.16.2.254
+                            ospfv2:
+                              header:
+                                option: None
+                                lsa_id: 172.16.2.254
+                                age: 155
+                                type: 1
+                                adv_router: 172.16.2.254
+                                seq_num: 80000004
+                                checksum: 0xF59
+                                length: 48
+                              body:
+                                router:
+                                  num_of_links: 2
+                                  links:
+                                    172.16.2.0:
+                                      link_id: 172.16.2.0
+                                      link_data: 255.255.255.0
+                                      type: stub network
+                                      topologies:
+                                        0:
+                                          mt_id: 0
+                                          metric: 1
+                                    172.16.0.1:
+                                      link_id: 172.16.0.1
+                                      link_data: 172.16.0.2
+                                      type: transit network
+                                      topologies:
+                                        0:
+                                          mt_id: 0
+                                          metric: 1
+                          172.16.1.254 172.16.1.254:
+                            lsa_id: 172.16.1.254
+                            adv_router: 172.16.1.254
+                            ospfv2:
+                              header:
+                                option: None
+                                lsa_id: 172.16.1.254
+                                age: 160
+                                type: 1
+                                adv_router: 172.16.1.254
+                                seq_num: 80000005
+                                checksum: 0xFB6F
+                                length: 48
+                              body:
+                                router:
+                                  num_of_links: 2
+                                  links:
+                                    172.16.1.0:
+                                      link_id: 172.16.1.0
+                                      link_data: 255.255.255.0
+                                      type: stub network
+                                      topologies:
+                                        0:
+                                          mt_id: 0
+                                          metric: 1
+                                    172.16.0.1:
+                                      link_id: 172.16.0.1
+                                      link_data: 172.16.0.1
+                                      type: transit network
+                                      topologies:
+                                        0:
+                                          mt_id: 0
+                                          metric: 1
+                      2:
+                        lsa_type: 2
+                        lsas:
+                          172.16.0.1 172.16.1.254:
+                            lsa_id: 172.16.0.1
+                            adv_router: 172.16.1.254
+                            ospfv2:
+                              header:
+                                option: None
+                                lsa_id: 172.16.0.1
+                                age: 161
+                                type: 2
+                                adv_router: 172.16.1.254
+                                seq_num: 80000001
+                                checksum: 0xEC58
+                                length: 32
+                              body:
+                                network:
+                                  network_mask: 255.255.255.0
+                                  attached_routers:
+                                    172.16.1.254:
+                                    172.16.2.254:
+                  area_id: 0.0.0.0
+                  area_type: normal
+                  statistics:
+                    spf_runs_count: 3
+                    area_scope_lsa_count: 3
+                    area_scope_lsa_cksum_sum: 0x01F720
+                  interfaces:
+                    GigabitEthernet0/1:
+                      name: GigabitEthernet0/1
+                      interface_type: broadcast
+                      passive: False
+                      demand_circuit: False
+                      priority: 1
+                      transmit_delay: 1
+                      bfd:
+                        enable: False
+                      hello_interval: 10
+                      dead_interval: 40
+                      retransmit_interval: 5
+                      lls: True
+                      enable: True
+                      cost: 1
+                      state: dr
+                      hello_timer: 00:00:00
+                      dr_router_id: 172.16.2.254
+                      dr_ip_addr: 172.16.2.254
+                    GigabitEthernet0/2:
+                      name: GigabitEthernet0/2
+                      interface_type: broadcast
+                      passive: False
+                      demand_circuit: False
+                      priority: 1
+                      transmit_delay: 1
+                      bfd:
+                        enable: False
+                      hello_interval: 10
+                      dead_interval: 40
+                      retransmit_interval: 5
+                      lls: True
+                      enable: True
+                      cost: 1
+                      state: bdr
+                      hello_timer: 00:00:00
+                      dr_router_id: 172.16.1.254
+                      dr_ip_addr: 172.16.0.1
+                      bdr_router_id: 172.16.2.254
+                      bdr_ip_addr: 172.16.0.2
+                      neighbors:
+                        172.16.1.254:
+                          neighbor_router_id: 172.16.1.254
+                          address: 172.16.0.1
+                          dr_ip_addr: 172.16.0.1
+                          bdr_ip_addr: 172.16.0.2
+                          state: full
+                          dead_timer: 00:00:39
+                          statistics:
+                            nbr_event_count: 6
+                            nbr_retrans_qlen: 0
+              nsr:
+                enable: False
+              graceful_restart:
+                cisco:
+                  enable: False
+                  type: cisco
+                ietf:
+                  enable: False
+                  type: ietf
+              auto_cost:
+                enable: False
+              spf_control:
+                paths: 4
+                throttle:
+                  spf:
+                    start: 5000
+                    hold: 10000
+                    maximum: 10000
+              stub_router:
+                always:
+                  always: False
+                  include_stub: False
+                  summary_lsa: False
+                  external_lsa: False
+              bfd:
+                enable: False
+              adjacency_stagger:
+                initial_number: 300
+                maximum_number: 300
+=== ROUTING INFORMATION ===
+  vrf:
+    default:
+      address_family:
+        ipv4:
+          routes:
+            172.16.2.254/32:
+              route: 172.16.2.254/32
+              active: True
+              source_protocol: local
+              source_protocol_codes: L
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/1:
+                    outgoing_interface: GigabitEthernet0/1
+            172.16.2.0/24:
+              route: 172.16.2.0/24
+              active: True
+              source_protocol: connected
+              source_protocol_codes: C
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/1:
+                    outgoing_interface: GigabitEthernet0/1
+            172.16.1.0/24:
+              route: 172.16.1.0/24
+              active: True
+              route_preference: 110
+              metric: 2
+              source_protocol: ospf
+              source_protocol_codes: O
+              next_hop:
+                next_hop_list:
+                  1:
+                    index: 1
+                    next_hop: 172.16.0.1
+                    outgoing_interface: GigabitEthernet0/2
+                    updated: 00:02:42
+            172.16.0.2/32:
+              route: 172.16.0.2/32
+              active: True
+              source_protocol: local
+              source_protocol_codes: L
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/2:
+                    outgoing_interface: GigabitEthernet0/2
+            172.16.0.0/24:
+              route: 172.16.0.0/24
+              active: True
+              source_protocol: connected
+              source_protocol_codes: C
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/2:
+                    outgoing_interface: GigabitEthernet0/2
+            10.48.71.142/32:
+              route: 10.48.71.142/32
+              active: True
+              source_protocol: local
+              source_protocol_codes: L
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/0:
+                    outgoing_interface: GigabitEthernet0/0
+            10.48.71.128/26:
+              route: 10.48.71.128/26
+              active: True
+              source_protocol: connected
+              source_protocol_codes: C
+              next_hop:
+                outgoing_interface:
+                  GigabitEthernet0/0:
+                    outgoing_interface: GigabitEthernet0/0
+            0.0.0.0/0:
+              route: 0.0.0.0/0
+              active: True
+              route_preference: 1
+              metric: 0
+              source_protocol: static
+              source_protocol_codes: S*
+              next_hop:
+                next_hop_list:
+                  1:
+                    index: 1
+                    next_hop: 10.48.71.129
+=== STP INFORMATION ===
+  global:
+    bpdu_guard: False
+### END_DEVICE: R2
